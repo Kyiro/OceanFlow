@@ -1,8 +1,25 @@
-import { UltimateDiscordExperience, Debug } from './patcher';
-import { print } from './utils';
+import { Window } from "./lib/webpack";
+import { WebpackChunks } from "./lib/webpack";
+import OceanFlow from "./lib/oceanFlow";
+import patcher from "./patcher";
 
-print("log", "Main!");
+import premiumSpoof from "./plugins/premiumSpoof";
 
-Debug();
-
-UltimateDiscordExperience();
+(function main() {
+    Window.oceanFlow = new OceanFlow();
+    
+    Window.oceanFlow.addPlugin(
+        premiumSpoof
+    );
+    
+    Object.defineProperty(Window, "webpackChunk_tidal_web", {
+        get() {
+            return Window.webpackChunk;
+        },
+        
+        set(chunks: WebpackChunks) {
+            Window.webpackChunk = chunks;
+            if (!Window.webpackChunk.originalPush) patcher();
+        }
+    });
+})();

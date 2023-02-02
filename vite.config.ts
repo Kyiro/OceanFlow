@@ -10,7 +10,7 @@ export default defineConfig({
             userscript: {
                 icon: 'https://vitejs.dev/logo.svg',
                 namespace: 'ocean-flow',
-                match: ['https://listen.tidal.com/'],
+                match: ['*://listen.tidal.com/*'],
                 description: "Ocean Flow",
                 "run-at": "document-start",
                 grant: [
