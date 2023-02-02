@@ -1,5 +1,5 @@
-import OceanFlow from "../lib/oceanFlow";
-import { WebpackChunks } from "../lib/webpack";
+import OceanFlow from "@/lib/oceanFlow";
+import { WebpackChunks } from "@/lib/webpack";
 
 declare global {
     interface Window {

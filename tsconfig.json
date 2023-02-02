@@ -14,11 +14,16 @@
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "module": "ESNext",
+        "module": "CommonJS",
         "moduleResolution": "Node",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "outDir": "./dist/"
+        "outDir": "./dist/",
+        
+        "baseUrl": "./src/",
+        "paths": {
+            "@/*": ["./*"]
+        }
     },
     "include": [
         "src/**/*"

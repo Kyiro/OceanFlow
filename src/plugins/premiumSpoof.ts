@@ -1,4 +1,4 @@
-import { definePlugin } from "../lib/plugin";
+import { definePlugin } from "@/lib/plugin";
 
 export default definePlugin({
     name: "PremiumSpoof",
