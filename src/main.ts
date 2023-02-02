@@ -1,4 +1,3 @@
-import { Window } from "./lib/webpack";
 import { WebpackChunks } from "./lib/webpack";
 import OceanFlow from "./lib/oceanFlow";
 import patcher from "./patcher";
@@ -6,20 +5,20 @@ import patcher from "./patcher";
 import premiumSpoof from "./plugins/premiumSpoof";
 
 (function main() {
-    Window.oceanFlow = new OceanFlow();
+    window.oceanFlow = new OceanFlow();
     
-    Window.oceanFlow.addPlugin(
+    window.oceanFlow.addPlugin(
         premiumSpoof
     );
     
     Object.defineProperty(Window, "webpackChunk_tidal_web", {
         get() {
-            return Window.webpackChunk;
+            return window.webpackChunk;
         },
         
         set(chunks: WebpackChunks) {
-            Window.webpackChunk = chunks;
-            if (!Window.webpackChunk.originalPush) patcher();
+            window.webpackChunk = chunks;
+            if (!window.webpackChunk.originalPush) patcher();
         }
     });
 })();

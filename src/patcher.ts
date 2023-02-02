@@ -1,11 +1,11 @@
-import { Window, WebpackChunk } from "./lib/webpack";
+import { WebpackChunk } from "./lib/webpack";
 
 export default function patcher() {
-    const patches = Window.oceanFlow.getPatches();
+    const patches = window.oceanFlow.getPatches();
     
-    Window.webpackChunk.originalPush = Window.webpackChunk.push;
+    window.webpackChunk.originalPush = window.webpackChunk.push;
     
-    Window.webpackChunk.push = (...chunks: WebpackChunk[]) => {
+    window.webpackChunk.push = (...chunks: WebpackChunk[]) => {
         for (const chunk of chunks) {
             console.log("Chunk: ", chunk[0]);
             
@@ -24,6 +24,6 @@ export default function patcher() {
             }
         }
         
-        return Window.webpackChunk.originalPush(...chunks);
+        return window.webpackChunk.originalPush(...chunks);
     };
 }
