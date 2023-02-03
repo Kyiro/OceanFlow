@@ -1,15 +1,25 @@
 {
     "name": "ocean-flow",
-    "private": true,
-    "version": "0.1.0",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
     "scripts": {
-        "dev": "tsc --watch",
-        "build": "tsc"
+        "fmt": "prettier --write src *.json *.ts",
+        "build": "vite build",
+        "dev": "vite build --watch --mode development"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@samrum/vite-plugin-web-extension": "^3.0.0",
+        "@types/firefox-webext-browser": "^109.0.0",
+        "prettier": "^2.8.3",
+        "vite": "^4.1.1",
+        "web-ext": "^7.5.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"
-    },
-    "devDependencies": {
-        "typescript": "^4.9.4"
     }
 }
