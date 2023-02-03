@@ -16,7 +16,10 @@ export default defineConfig(({ mode }) => {
             }
         },
         build: {
-            minify: mode == "production"
+            minify: mode == "production",
+            watch: {
+                include: ["browser/", "src/"]
+            }
         }
     };
 });

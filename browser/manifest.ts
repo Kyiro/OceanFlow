@@ -11,18 +11,32 @@ export default defineManifest({
     description: pkg.description,
     version: pkg.version,
     manifest_version: 3,
-    
-    host_permissions: [
-        "*://listen.tidal.com/*",
-        "*://desktop.tidal.com/*"
-    ],
+
+    host_permissions: ["*://listen.tidal.com/*", "*://desktop.tidal.com/*"],
     permissions: ["declarativeNetRequest"],
-    
+
     content_scripts: [
         {
             run_at: "document_start",
             matches: ["*://*.tidal.com/*"],
-            js: ["src/main.ts"]
+            js: ["browser/content.ts"]
         }
-    ]
+    ],
+
+    web_accessible_resources: [
+        {
+            resources: ["src/main.ts"],
+            matches: ["*://*.tidal.com/*"]
+        }
+    ],
+
+    declarative_net_request: {
+        rule_resources: [
+            {
+                id: "modifyResponseHeaders",
+                enabled: true,
+                path: "modifyResponseHeaders.json"
+            }
+        ]
+    }
 });
